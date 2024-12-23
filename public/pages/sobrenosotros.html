@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET STORE</title>
+    <link href="../css/estilo.css" rel="stylesheet">
+    <link href="../css/menu.css" rel ="stylesheet">
+    <link href="../css/productos.css" rel ="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="../JS/daltonicos.js" defer></script>
+</head>
+<body>
+    <div class="caja" style="padding: 0px;">
+        <div class="container">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div><img id="logo" src="../images/logo.png" alt="logo"></div>
+            <a class="indice" href="../index.html"><h1 id="title1"><strong>PetCare</strong></h1></a>
+            <div>
+                <a href="../pages/carrito.html"><img id="carrito" src="../images/carrito.png" height="40px" width="70px"></a>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+            
+            <a href="../pages/perfil.html">
+                <img id="perfil" src="../images/perfil.png" height="70px" width="70px" alt="Perfil">
+            </a>
+            <button id="toggle-daltonico">Modo Daltónico</button>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a id="menú" href="../index.html">Inicio</a></li>
+                <li><a id="menú" href="../pages/sobrenosotros.html">Sobre Nosotros</a></li>
+                <li class="dropdown">
+                    <a id="menú">Nuestros productos</a>
+                    <ul class="dropdown-content">
+                        <li><a id="menú" href="../pages/perros.html">Para Perros</a></li>
+                        <li><a  id="menú"href="../pages/gatos.html">Para Gatos</a></li>
+                        <li><a  id="menú"href="../pages/aves.html">Para Aves</a></li>
+                        <li><a  id="menú"href="../pages/hamster.html">Para Hamsters</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <main class="main-content">
+    
+        <div id=""class="sobre-nosotros-container">
+            <article class="sobre-nosotros">
+                <h2>Sobre Nosotros</h2>
+                <p>
+                    En PetCare, nos dedicamos a proporcionar el mejor cuidado y alimentación para tus mascotas. Nuestro objetivo es ofrecer productos de alta calidad que aseguren el bienestar y la felicidad de tus compañeros peludos. Con una experiencia de años en el mercado, nos enorgullecemos de ser un referente en el sector, apoyando a nuestros clientes con soluciones nutricionales y cuidados especializados.
+                </p>
+                
+            </article>
+        </div>
+            
+        <div class="sobre-nosotros-container">
+            <article class="sobre-nosotros">
+                <h2>Misión</h2>
+                <p>
+                    Nuestra misión es mejorar la calidad de vida de las mascotas a través de productos nutricionales innovadores, saludables y de la más alta calidad. Queremos ser el puente entre los dueños responsables y el bienestar integral de sus mascotas.
+                </p>
+                
+            </article>
+        </div>
+        <div class="sobre-nosotros-container">
+            <article class="sobre-nosotros">
+                <h2>Visión</h2>
+                <p>
+                    Ser la empresa líder en el sector de productos para mascotas, reconocida por nuestro compromiso con el bienestar animal, la sostenibilidad y la innovación continua, promoviendo relaciones más saludables y felices entre las mascotas y sus dueños.
+                </p>
+                
+            </article>
+        </div>
+        <div id="div-video">  
+            <video   id="miVideo" width="640" height="360">
+            <source src="../videos/video.mov" type="video/mp4">
+            </video>
+        </div>
+        
+
+        <!-- Botones para controlar el video -->
+        <div id="video">
+          
+            <button class ="reproducir"id="silenciar"onclick="silenciar()"><img src="../images/silencio.png" height="20px" width="20px"></button>
+            <button class ="reproducir"id="retroceder" onclick="retroceder()"><img src="../images/atras10.png" height="20px" width="20px"></button>
+            <button class ="reproducir"id="reproducir"  onclick="reproducir()"><img src="../images/play.png" height="20px" width="20px"></button>
+            <button class ="reproducir"id="pausar"onclick="pausar()"><img src="../images/stop.png" height="20px" width="20px"></button>
+            <button class ="reproducir"id="adelantar" onclick="adelantar()"><img src="../images/adelantar10.png" height="20px" width="20px"></button>
+            <button class ="reproducir"id="activarsonido"onclick="activarSonido()"><img src="../images/activar_sonido.png" height="20px" width="20px"></button>
+            <input id="cambiarvol"type="range" id="controlVolumen" min="0" max="1" step="0.1" onchange="cambiarVolumen()">
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="ubicacion">
+            <h3 >UBICACIÓN</h3>
+        </div>
+        <div class="main-container">
+            
+             
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9537353153161!3d-37.81627977975198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f2b58e6b%3A0xb1d617aa62d3f6bb!2sFederation+Square!5e0!3m2!1sen!2sau!4v1635945119462!5m2!1sen!2sau"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+        
+            <div class="info-container">
+              <div class="contact-section">
+                <h3>CONTÁCTENOS</h3>
+                <p><img src="../images/mail.png" alt="icono de correo" width="10%" height="10%"> petcare@hotmail.com</p>
+                <p><img src="../images/telefono.png" alt="icono de teléfono"  width="10%" height="10%"> +593 983707315</p>
+              </div>
+            </div>
+          </div>
+    
+    </main>      
+    <footer>
+        <p>&copy; 2024 PetCare. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<script src="../JS/script.js"></script>
+<script src="../JS/video.js"></script>
+<script src="../JS/cambiarTamaño.js"></script>
+</html>

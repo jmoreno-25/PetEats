@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET STORE</title>
+    <link href="../css/menu.css" rel ="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="../JS/daltonicos.js" defer></script>
+    <script src="../JS/validarDatos.js"></script>
+</head>
+<body>
+    <div class="caja" style="padding: 0px;">
+        <div class="container">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div><img id="logo" src="../images/logo.png" alt="logo"></div>
+            <a class="indice" href="../index.html"><h1 id="title1"><strong>PetCare</strong></h1></a>
+            <div>
+                <a href="../pages/carrito.html"><img id="carrito" src="../images/carrito.png" height="40px" width="70px"></a>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+            
+            <a href="../pages/perfil.html">
+                <img id="perfil" src="../images/perfil.png" height="70px" width="70px" alt="Perfil">
+            </a>
+            <button id="toggle-daltonico">Modo Daltónico</button>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a id="menú" href="../index.html">Inicio</a></li>
+                <li><a id="menú" href="../pages/sobrenosotros.html">Sobre Nosotros</a></li>
+                <li class="dropdown">
+                    <a id="menú">Nuestros productos</a>
+                    <ul class="dropdown-content">
+                        <li><a id="menú" href="../pages/perros.html">Para Perros</a></li>
+                        <li><a  id="menú"href="../pages/gatos.html">Para Gatos</a></li>
+                        <li><a  id="menú"href="../pages/aves.html">Para Aves</a></li>
+                        <li><a  id="menú"href="../pages/hamster.html">Para Hamsters</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+    <main class="main-content">
+        <form id="DatosUsuario"class="form-container">
+            <h1>Crear Cuenta</h1>
+            <br>
+            
+            <label for="nombre">Nombre:</label>
+            <br>
+            <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre...">
+            <span class="error-message" id="errorNombre"></span>
+            <br>
+            <label for="nombre">Apellido:</label>
+            <br>
+            <input type="text" id="apellido" name="apellido" required placeholder="Escribe tu apellido...">
+            <span class="error-message" id="errorApellido"></span>
+            <br>
+            <label for="nombre">Nombre de Usuario:</label>
+            <br>
+            <input type="text" id="usuario" name="usuario" required placeholder="Escribe tu usuario...">
+            <span class="error-message" id="errorUsuario"></span>
+            <br>
+            <label for="nombre">Fecha de Nacimiento:</label>
+            <br>
+            <form>
+                <input type="date" id="fecha" name="fecha" required>
+                <span class="error-message" id="errorFecha"></span>
+            <br>
+            <br>
+            <label for="nombre">Celular:</label>
+            <br>
+            <input type="text" pattern="[0-9]{10}" id="celular" name="celular" required placeholder="Escribe tu celular...">
+            <span class="error-message" id="errorCelular"></span>
+            <br>
+            <label for="nombre">Correo:</label>
+            <br>
+            <input type="email" id="email" name="email" required placeholder="Escribe tu correo...">
+            <span class="error-message" id="errorCorreo"></span>
+            <br>    
+            <label for="nombre">Contraseña:</label>
+            <br>
+            <input type="password" id="contraseña" name="contraseña" required placeholder="Escribe tu contraseña...">
+            <br>    
+            <label for="nombre">Vuelve a escribir la contraseña :</label>
+            <span class="error-message" id="errorContrasena"></span>
+            <br>
+            <input type="password" id="Repetircontraseña"name="contraseña" required placeholder="Vuelve a escribir tu contraseña...">
+            <span class="error-message" id="errorRepetirContrasena"></span>
+            <br>
+            <br>
+            <button type="submit" class="botn2">Crear Cuenta</button>
+
+            </form>
+       
+    </main>
+    
+    
+        
+    <footer>
+        <p>&copy; 2024 PetCare. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<script src="../JS/script.js"></script>
+<script src="../JS/crearcuenta.js"></script>
+<script src="../JS/sessionstorage.js"></script>
+
+</html>

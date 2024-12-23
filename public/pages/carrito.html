@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPERMERCADO A PET STORE</title>
+    <link href="../css/estilo.css" rel="stylesheet">
+    <link href="../css/menu.css" rel ="stylesheet">
+    <link href="../css/productos.css" rel ="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Underdog&display=swap" rel="stylesheet">
+    <script src="../JS/daltonicos.js" defer></script>
+    <script src="../JS/accesoCarrito.js"></script>
+</head>
+<body>
+    <div class="caja" style="padding: 0px;">
+        <div class="container">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div><img id="logo" src="../images/logo.png" alt="logo"></div>
+            <a class="indice" href="../index.html"><h1 id="title1"><strong>PetCare</strong></h1></a>
+            <div>
+                <a href="../pages/carrito.html"><img id="carrito" src="../images/carrito.png" height="40px" width="70px"></a>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+            
+            <a href="../pages/perfil.html">
+                <img id="perfil" src="../images/perfil.png" height="70px" width="70px" alt="Perfil">
+            </a>
+            <button id="toggle-daltonico">Modo Daltónico</button>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a id="menú" href="../index.html">Inicio</a></li>
+                <li><a id="menú" href="../pages/sobrenosotros.html">Sobre Nosotros</a></li>
+                <li class="dropdown">
+                    <a id="menú">Nuestros productos</a>
+                    <ul class="dropdown-content">
+                        <li><a id="menú" href="../pages/perros.html">Para Perros</a></li>
+                        <li><a  id="menú"href="../pages/gatos.html">Para Gatos</a></li>
+                        <li><a  id="menú"href="../pages/aves.html">Para Aves</a></li>
+                        <li><a  id="menú"href="../pages/hamster.html">Para Hamsters</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+   <main class="main-content">
+    <br>
+    <br>
+    <br>
+    <div class="car" id="car">  
+        <div class="carrito">
+            <img id="imgcar" src="../images/carritovacio2.png" style="display: none;">
+        </div>
+        <div id="carritocnt">
+            <strong><h1 id="cartitle">TU CARRITO ESTÁ VACÍO...</h1></strong>
+            <img id="imgcar" src="../images/carritovacio2.png" style="display: none;" alt="Carrito vacío">
+            <ul id="cart-items" style="list-style: none; padding: 0;" >displayCart()</ul>
+        </div>
+    </div>
+
+   </main>
+ 
+   <footer>
+    <p>&copy; 2024 PetCare. Todos los derechos reservados a PetCare.</p>
+    </footer>
+
+</body>
+<script src="../JS/script.js"></script>
+</html>

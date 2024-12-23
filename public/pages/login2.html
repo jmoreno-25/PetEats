@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET STORE</title>
+    <link href="../css/menu.css" rel ="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="../JS/daltonicos.js" defer></script>
+
+</head>
+<body>
+    <div class="caja" style="padding: 0px;">
+        <div class="container">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div><img id="logo" src="../images/logo.png" alt="logo"></div>
+            <a class="indice" href="../index.html"><h1 id="title1"><strong>PetCare</strong></h1></a>
+            <div>
+                <a href="../pages/carrito.html"><img id="carrito" src="../images/carrito.png" height="40px" width="70px"></a>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+            
+            <a href="../pages/perfil.html">
+                <img id="perfil" src="../images/perfil.png" height="70px" width="70px" alt="Perfil">
+            </a>
+            <button id="toggle-daltonico">Modo Daltónico</button>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a id="menú" href="../index.html">Inicio</a></li>
+                <li><a id="menú" href="../pages/sobrenosotros.html">Sobre Nosotros</a></li>
+                <li class="dropdown">
+                    <a id="menú">Nuestros productos</a>
+                    <ul class="dropdown-content">
+                        <li><a id="menú" href="../pages/perros.html">Para Perros</a></li>
+                        <li><a  id="menú"href="../pages/gatos.html">Para Gatos</a></li>
+                        <li><a  id="menú"href="../pages/aves.html">Para Aves</a></li>
+                        <li><a  id="menú"href="../pages/hamster.html">Para Hamsters</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <main class="main-content">
+        <form id="iniciarSesion" class="form-container">
+            <h1>Iniciar Sesión</h1>
+            <br>
+            <label for="nombre">Usuario:</label>
+            <br>
+            <input type="text" id="usuario" name="nombre" placeholder="Escribe tu usuario...">
+            <br>
+            <label for="nombre">Contraseña:</label>
+            <br>
+            <input type="password" id="contraseña" name="nombre" placeholder="Escribe tu contraseña...">
+            <br>
+            <button type="submit" class="botn">Continuar</button>
+            <br>
+            <br>
+            <label for="nombre">Olvidaste tu contraseña</label>
+            <br>
+            <a id="sin-cuenta" href="../pages/registrarse.html"><p for="nombre">¿No tienes cuenta? Crea una cuenta</p></a>
+        </form>
+       
+    </main>
+    
+    
+        
+    <footer>
+        <p>&copy; 2024 PetCare. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<script src="../JS/verperfil.js"></script>
+<script src="../JS/script.js"></script>
+
+</html>

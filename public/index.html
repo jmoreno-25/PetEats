@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET STORE</title>
+    <link href="css/menu.css" rel ="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Underdog&display=swap" rel="stylesheet">
+    <script src="JS/daltonicos.js" defer></script>
+
+</head>
+</head>
+
+<body>
+   
+    <div class="caja" style="padding: 0px;">
+        <div class="container">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div><img id="logo" src="images/logo.png" alt="logo"></div>
+            <a class="indice" href="index.html"><h1 id="title1"><strong>PetCare</strong></h1></a>
+            <div>
+                <a href="pages/carrito.html"><img id="carrito" src="images/carrito.png" height="40px" width="70px"></a>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+            
+            <a href="pages/perfil.html">
+                <img id="perfil" src="images/perfil.png" height="70px" width="70px" alt="Perfil">
+            </a>
+            <button id="toggle-daltonico">Modo Daltónico</button>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a id="menú" href="index.html">Inicio</a></li>
+                <li><a id="menú" href="pages/sobrenosotros.html">Sobre Nosotros</a></li>
+                <li class="dropdown">
+                    <a id="menú">Nuestros productos</a>
+                    <ul class="dropdown-content">
+                        <li><a id="menú" href="pages/perros.html">Para Perros</a></li>
+                        <li><a  id="menú"href="pages/gatos.html">Para Gatos</a></li>
+                        <li><a  id="menú"href="pages/aves.html">Para Aves</a></li>
+                        <li><a  id="menú"href="pages/hamster.html">Para Hamsters</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+    <br>
+    <br>
+    <main class="main-content">
+        <div class="tituloindice">
+            <h1>OFRECEMOS LAS MEJORES MARCAS</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="seccionmarcas">
+            <section id="seccion">
+                <img src="images/dowchow.jpg">
+                <img src="images/NutraProo.png">
+                <img src="images/royal-canin.png">
+                <img src="images/Pedigree.png">
+            </section>
+        </div>
+        <div class="tituloindice">
+            <h1>SECCIONES DE MASCOTAS</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="menu-logos">
+            <div class="menu-item">
+                <h1 class="tituloindice">Perros</h1>
+                <a href="pages/perros.html"><img class="imagen-menu" src="images/perromenu.png" alt="Perros"></a>
+            </div>
+            <div class="menu-item">
+                <h1 class="tituloindice">Gatos</h1>
+                <a href="pages/gatos.html"><img class="imagen-menu" src="images/gatomenu.png" alt="Gatos"></a>
+            </div>
+            <div class="menu-item">
+                <h1 class="tituloindice">Aves</h1>
+                <a href="pages/aves.html"><img class="imagen-menu" src="images/pajaromenú.png" alt="Aves"></a>
+            </div>
+            <div class="menu-item">
+                <h1 class="tituloindice">Hamsters</h1>
+                <a href="pages/hamster.html"><img class="imagen-menu" src="images/hamsterlogo.png" alt="Hamsters"></a>
+            </div>
+        </div>
+        <div class="tituloindice">
+            <h1>PRODUCTOS DESTACADOS</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="slide">
+                    <div id="producto1">
+                        <img class="imagen" src="images/npc7.52.png" onclick="abrirModal('Producto 1', 'Ofrecemos stock de 7.5 kg y 2 kg ', ['images/npc7.52.png', 'images/nutrapro.png'])" alt="Producto 1">
+                        <div class="descripcion"><strong>Pro Perros Cachorros -Razas Medianas y Pequeñas</strong> </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div id="producto2">
+                        <img class="imagen2" src="images/dcmp21kg.png" onclick="abrirModal('Producto 1', 'Ofrecemos stock de 274 g, 2 kg y 21kg', ['images/dcmp274g.png','images/dcm2kg.png', 'images/dcmp21kg.png'])">
+                        <div class="descripcion"><strong>Chow Adultos - Minis y Pequeños</strong> </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div id="producto3">
+                        <img class="imagen" src="images/npga1.png" onclick="abrirModal('Producto 1', 'Ofrecemos stock de 200 g y 2 kg', ['images/npga1.png', 'images/npga2.png'])" alt="Producto 1">
+                        <div  class="descripcion"><strong>Pro Gatos Adultos - Vitality</strong> </div>
+                    </div>
+                </div>
+               
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+        </div>
+
+        <div class="galeria">
+            <!-- Producto 1 -->
+
+            <!-- Añade más productos siguiendo el mismo formato -->
+        </div>
+         <!-- Modal para mostrar las imágenes del producto -->
+        <div id="modal">
+            <div id="modal-content">
+                <button class="close-btn" onclick="cerrarModal()">×</button>
+                <img id="main-img" src="" alt="">
+                <div class="modal-img-container" id="modal-img-container"></div>
+                <div id="modal-desc" class="descripcion"></div>
+                
+                
+            </div>
+        </div>
+        <div class="tituloindice">
+            <h1 >MEGAOFERTAS</h1>
+            <div class="slideshow-container">
+               
+            </div>
+            <div class="seccionmarcas">
+                <section id="seccion2">
+                    <img  src="images/promocion3.png">
+                    <img  src="images/OFERTAS.png"  >
+                    <img  src="images/oferta2.png">
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 PetCare. Todos los derechos reservados.</p>
+    </footer>
+    
+</body>
+<script src="JS/script.js"></script>
+
+</html>

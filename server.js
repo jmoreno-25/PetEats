@@ -5,7 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg'); // Importar el módulo pg para PostgreSQL
 const app = express();
-const PORT = process.env.PORT || 33789;
+const PORT = process.env.PORT || 4000;
 const host=process.env.HOST || 8080;
 // Middleware para parsear JSON
 app.use(bodyParser.json());
@@ -14,15 +14,11 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
+    connectionString: process.env.DATABASE_URL,
     ssl: {
-      rejectUnauthorized: false, // Necesario en Railway
+      rejectUnauthorized: false, // Esto es necesario para Railway
     },
-  });
+});
 
 const crypto = require('crypto');
 

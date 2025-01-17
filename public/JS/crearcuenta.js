@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.getElementById('DatosUsuario').addEventListener('submit', function(event) {
     event.preventDefault();
-
+    const cli_cedula = document.getElementById('cedula').value.trim();
     const nombreusuario = document.getElementById('usuario').value.trim();
     const email = document.getElementById('email').value.trim();
     const contrasena = document.getElementById('contraseña').value.trim();
@@ -78,8 +78,10 @@ document.getElementById('DatosUsuario').addEventListener('submit', function(even
         return regex.test(phone);
     }
     
+    
     sessionStorage.setItem('nombre', cli_nombre);
     sessionStorage.setItem('apellido', cli_apellido);
+    sessionStorage.setItem('cedula',cli_cedula);
     sessionStorage.setItem('usuario', nombreusuario);
     sessionStorage.setItem('fechaNacimiento', cli_edad);
     sessionStorage.setItem('celular', cli_celular);
@@ -98,7 +100,8 @@ document.getElementById('DatosUsuario').addEventListener('submit', function(even
             cli_apellido, 
             cli_correo, 
             cli_edad, 
-            cli_celular 
+            cli_celular,
+            cli_cedula 
         })
     })
     .then(response => {
@@ -113,7 +116,7 @@ document.getElementById('DatosUsuario').addEventListener('submit', function(even
         if (data.usuarioId) {
             alert(data.message);
             // Redirige pasando usuarioId correctamente
-            window.location.href = `../pages/datos-envio.html?usuario_id=${data.usuarioId}`;
+            window.location.href = `../index.html?usuario_id=${data.usuarioId}`;
         } else {
             alert('Error: No se pudo generar el usuario.');
         }

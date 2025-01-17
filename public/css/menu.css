@@ -1071,7 +1071,7 @@ button:hover {
     margin-left: 10%;
     text-align: center;
     top: 100%;
-    width: 20%; /* Ocupa todo el ancho */
+    width: 80%; /* Ocupa todo el ancho */
     background-color: #f0c14b;
     cursor: pointer;
     font-size: 14px;
@@ -1259,11 +1259,12 @@ button:hover {
     #toggle-daltonico{
         position: fixed;
         bottom: 9%;
+        width: 50%;
         right: 10px;
         padding: 12px;
         background-color: #FFD700;
         border: none;
-        border-radius: 138%;
+        border-radius: 5px;
         cursor: pointer;
         font-size: 10px;
     }
@@ -1343,7 +1344,7 @@ button:hover {
     }
     #clear-cart {
         position: relative;
-        width: 38%;
+        width: 99%;
         left: -8%;
         font-size: 13px;
         padding: 8px;

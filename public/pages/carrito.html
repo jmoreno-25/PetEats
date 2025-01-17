@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPERMERCADO A PET STORE</title>
-    <link href="../css/estilo.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
     <link href="../css/menu.css" rel ="stylesheet">
     <link href="../css/productos.css" rel ="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Underdog&display=swap" rel="stylesheet">
     <script src="../JS/daltonicos.js" defer></script>
-    <script src="../JS/accesoCarrito.js"></script>
+
+    
 </head>
 <body>
     <div class="caja" style="padding: 0px;">
@@ -50,16 +51,83 @@
     <br>
     <br>
     <br>
-    <div class="car" id="car">  
-        <div class="carrito">
-            <img id="imgcar" src="../images/carritovacio2.png" style="display: none;">
+    <div class="main-container">
+        <div class="billing-section">
+          <h2>Facturación</h2>
+          <form>
+            <div class="form-group">
+                <div>
+                    <label for="first-name">Cédula</label>
+                    <input type="text" id="cedula">
+                  </div>
+              <div>
+                <label for="first-name">Nombre</label>
+                <input type="text" id="first-name">
+              </div>
+              <div>
+                <label for="last-name">Apellido</label>
+                <input type="text" id="last-name" >
+              </div>
+            </div>
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono">
+            <label for="email">Correo</label>
+            <input type="email" id="email">
+            <br>
+            <br>
+            <h2>Dirección de Envío</h2>
+            <label for="address">Dirección</label>
+            <input type="text" id="address" placeholder="Av. 12 Octubre y Gaspar de Villaroel">
+            <div class="form-group">
+              <div>
+                <label for="country">Provincia</label>
+                <input type="text" id="provincia" placeholder="Pichincha">
+              </div>
+              <div>
+                <label for="state">Ciudad</label>
+                <input type="text" id="ciudad" placeholder="Quito">
+              </div>
+              <div>
+                <label for="zip">Código Postal</label>
+                <input type="text" id="zip">
+              </div>
+            </div>
+            <br>
+            <h2>Método de Pago</h2>
+            
+            <label for="name-on-card">Titular Tarjeta</label>
+            <input type="text" id="name-on-card">
+            <label for="card-number">Número Tarjeta</label>
+            <input type="text" id="card-number">
+            <div class="form-group">
+              <div>
+                <label for="expiration">Fecha Expiración</label>
+                <input type="date" id="expiration">
+              </div>
+              <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv">
+              </div>
+            </div>
+            <button type="submit" class="botn" id="pagar-btn">Pagar</button>
+          </form>
         </div>
-        <div id="carritocnt">
-            <strong><h1 id="cartitle">TU CARRITO ESTÁ VACÍO...</h1></strong>
-            <img id="imgcar" src="../images/carritovacio2.png" style="display: none;" alt="Carrito vacío">
-            <ul id="cart-items" style="list-style: none; padding: 0;" >displayCart()</ul>
-        </div>
-    </div>
+        <div class="cart-section">
+          <h2>Tu Carrito </h2>
+          <!-- Lista dinámica para los productos -->
+          <ul id="cart-items">
+              <!-- Los productos se añadirán aquí dinámicamente -->
+          </ul>
+          <!-- Mensaje cuando el carrito esté vacío -->
+          <p id="empty-cart-message" style="display: none;">Sin productos en el carrito...</p>
+          <!-- Subtotal, IVA y Total -->
+          <p id="subtotal-amount"></p>
+          <p id="iva-amount"></p>
+          <p id="total-amount"></p>
+          <!-- Botones para vaciar el carrito -->
+          <button id="clear-cart" style="display: none;" onclick="clearCart()">Vaciar Carrito</button>
+      </div>
+      </div>
 
    </main>
  
@@ -69,4 +137,23 @@
 
 </body>
 <script src="../JS/script.js"></script>
+<script src="../JS/factura.js"></script>
+<script src="../JS/accesoCarrito.js"></script>
+<script>
+  // Vincula las funciones directamente al botón pagar
+  const botonPagar = document.getElementById("pagar-btn");
+  if (typeof enviarFactura === "function") {
+      botonPagar.addEventListener("click", enviarFactura);
+  } else {
+      console.error("La función enviarFactura no está definida.");
+  }
+  if (typeof clearCart === "function") {
+      botonPagar.addEventListener("click", clearCart);
+  } else {
+      console.error("La función clearCart no está definida.");
+  }
+
+ 
+</script>
+
 </html>

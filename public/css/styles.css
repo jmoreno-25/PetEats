@@ -1,0 +1,221 @@
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgb(246, 221, 204); /* Fondo acorde al diseño general */
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: #ddb347;
+}
+
+button:disabled {
+    background-color: #e4e4e4;
+    cursor: not-allowed;
+}
+/* Sección de facturación */
+.billing-section, .cart-section {
+    padding: 20px;
+    background-color: floralwhite; /* Fondo suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.billing-section {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.cart-section {
+    flex: 1;
+    border-left: 1px solid #ddd;
+}
+
+/* Títulos */
+h2 {
+    font-family: 'Questrial', sans-serif;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Inputs y selects */
+input, select, button {
+    width: 50%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-group label {
+    margin-left: 5px;
+}
+
+/* Botones */
+button {
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    color: #111;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ddb347;
+}
+
+/* Carrito */
+.cart-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+.cart-section img {
+    width: 50px;
+    height: 50px;
+}
+.cart-section ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.cart-section ul li.promo {
+    color: green;
+}
+
+.cart-section ul li.total {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.promo-code {
+    display: flex;
+    gap: 10px;
+}
+
+.promo-code input {
+    flex: 1;
+}
+
+.promo-code button {
+    flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Cambia a disposición en columna */
+    }
+
+    .billing-section, .cart-section {
+        flex: none;
+        margin: 0 0 20px 0;
+        width: 100%; /* Ambas secciones ocupan el 100% del ancho */
+    }
+
+    .cart-section {
+        order: 1; /* Carrito se muestra primero */
+    }
+
+    .billing-section {
+        order: 2; /* Formulario se muestra después */
+    }
+
+    .promo-code {
+        flex-direction: column;
+    }
+
+    .promo-code input, .promo-code button {
+        width: 100%;
+    }
+}
+#toggle-daltonico{
+    position: fixed;
+    bottom: 50px;
+    width: 16%;
+    right: 10px;
+    padding: 10px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cart-section {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff9f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Contenedor de cada producto */
+#cart-items div {
+    display: flex;
+    flex-direction: column; /* Disposición vertical */
+    align-items: center; /* Centrar contenido */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Imagen del producto */
+#cart-items img {
+    width: 100px; /* Tamaño fijo para la imagen */
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Texto del producto */
+#cart-items p {
+    margin: 0;
+    font-size: 14px;
+    text-align: center; /* Centrar texto */
+}
+
+/* Subtotales y totales */
+#subtotal-amount, #iva-amount, #total-amount {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+button {
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    width: 200%;
+    color: #111;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}

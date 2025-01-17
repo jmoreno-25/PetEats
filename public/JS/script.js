@@ -70,9 +70,6 @@ function moveSlide(direction) {
     carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-
-
-
 // carrito
 // Carrito de compras
  // Cargar carrito desde Local Storage
@@ -82,9 +79,10 @@ function moveSlide(direction) {
  const cartCountElement = document.getElementById("cart-count");
 
  function handleAddToCart(productName, productPrice, productImage, quantityId) {
+    console.log(quantityId);
     // Obtener la cantidad seleccionada del producto usando el ID del <select>
     const productQuantity = parseInt(document.getElementById(quantityId).value);
-   
+    
     // Llamar a la función addToCart con los datos del producto
     addToCart(productName, productPrice, productImage, productQuantity);
      Swal.fire({
@@ -150,223 +148,180 @@ function loadCartCount() {
 // Cargar el contador al iniciar
 loadCartCount();
 
-console.log(cart); // Verifica que cada producto tenga una cantidad correcta (número entero)
-
-
 // Seleccionar elementos del DOM
 const cartItemsElement = document.getElementById("cart-items");
-const carItemElement = document.getElementById("car");
-const cartTitleElement = document.getElementById("cartitle");
-const cartImageElement = document.getElementById("imgcar");
-const totalAmountElement = document.createElement("p");
-totalAmountElement.className="total-p";
-const subtotalAmountElement = document.createElement("p");
-subtotalAmountElement.className="total-p";
-const ivaAmountElement = document.createElement("p"); // Elemento para mostrar el total
-const clearCartButton = document.createElement("button"); // Botón para vaciar el carrito
-const buyCartButton = document.createElement("button"); // Botón para vaciar el carrito
-const divborrarcomprar = document.createElement("div");
+const emptyCartMessage = document.getElementById("empty-cart-message");
+const clearCartButton = document.getElementById("clear-cart");
+const subtotalAmountElement = document.getElementById("subtotal-amount");
+const ivaAmountElement = document.getElementById("iva-amount");
+const totalAmountElement = document.getElementById("total-amount");
 
-divborrarcomprar.style.display = "flex";
-divborrarcomprar.style.alignItems = "center";
-
-
-
-// Configuración del botón "Vaciar Carrito"
-clearCartButton.id = "clear-cart";
-clearCartButton.textContent = "Vaciar Carrito";
-clearCartButton.onclick = clearCart; // Asigna la función para vaciar el carrito
-clearCartButton.style.display = "none"; // Inicialmente oculto
-clearCartButton.style.marginRight = "10px";
-
-
-buyCartButton.id = "comprar-car";
-buyCartButton.textContent = "Comprar";
-buyCartButton.onclick = () => {
-    window.location.href = "../pages/comprar.html"; // Cambiar de pestaña o página
-};
-// Asegúrate de que ambos botones estén dentro de divborrarcomprar
-divborrarcomprar.appendChild(clearCartButton);
-divborrarcomprar.appendChild(buyCartButton);
-
-// Asegurarse de que el botón "Vaciar Carrito" se agrega al contenedor si no existe
-if (!cartItemsElement.parentNode.contains(divborrarcomprar)) {
-    cartItemsElement.parentNode.appendChild(divborrarcomprar);
-}
-
+// Función para mostrar los productos del carrito
+// Función para mostrar los productos del carrito en formato vertical
 function displayCart() {
-    cartItemsElement.innerHTML = ""; // Limpiar la lista actual de productos
+    cartItemsElement.innerHTML = ""; // Limpiar la lista de productos
 
     if (cart.length === 0) {
-        // Si el carrito está vacío, mostrar el mensaje
-        cartTitleElement.textContent = "TU CARRITO ESTÁ VACÍO...";
-        cartImageElement.style.display = "block";
-        cartItemsElement.style.display = "none";
-        carItemElement.style.maxHeight="100%";
-        // Ocultar el total y el botón de vaciar carrito
-        subtotalAmountElement.textContent="";
-        totalAmountElement.textContent = "";
-        ivaAmountElement.textContent="";
-        divborrarcomprar.style.display ="none";
+        // Mostrar mensaje de carrito vacío
+        emptyCartMessage.style.display = "block";
         clearCartButton.style.display = "none";
-        buyCartButton.style.display ="none";
+        subtotalAmountElement.textContent = "";
+        ivaAmountElement.textContent = "";
+        totalAmountElement.textContent = "";
     } else {
-        carItemElement.style.maxHeight="80%";
-        cartTitleElement.textContent = "TU CARRITO:";
-        cartImageElement.style.display = "none";
-        cartItemsElement.style.display = "block";
+        emptyCartMessage.style.display = "none";
+        clearCartButton.style.display = "inline-block";
 
-        let totalAmount = 0; // Inicializa el total en 0
-        let ivaAmount = 0;
-        let subtotalAmount = 0;
-        cart.forEach(item => {
-            const li = document.createElement("li");
-
-            // Validar que la cantidad sea un número y que esté definida
-            const quantity = item.quantity || 0;
-            const subtotal = item.price *quantity ||0;
-            const iva = subtotal * 0.15 ||0;
-            const total = subtotal + iva || 0;
-
-            // Crear un contenedor para la imagen y los detalles del producto
+        let subtotal = 0;
+        cart.forEach((item, index) => {
+            // Crear un contenedor para cada producto
             const productContainer = document.createElement("div");
-            productContainer.className ="div-car";
             productContainer.style.display = "flex";
-            productContainer.style.alignItems = "center";
+            productContainer.style.flexDirection = "column"; // Disposición vertical
+            productContainer.style.alignItems = "center"; // Centrar contenido
+            productContainer.style.marginBottom = "15px";
+            productContainer.style.borderBottom = "1px solid #ddd";
+            productContainer.style.paddingBottom = "10px";
 
-            // Crear la imagen del producto
+            // Imagen del producto
             const img = document.createElement("img");
-            img.className="car-adp"
-            img.src = item.image;
+            img.src = item.image; // URL de la imagen
             img.alt = item.name;
-            // Crear el texto del producto (nombre, precio y cantidad)
-            const productDetails = document.createElement("span");
-            productDetails.className="car-span";
-            productDetails.textContent = `${item.name} - $${item.price}`;
- 
-             // Botón "−" (Disminuir cantidad)
-             const decreaseButton = document.createElement("button");
-             decreaseButton.className = "remove-button";
-             decreaseButton.textContent = "🗑️";
-             decreaseButton.style.padding = "5px";
-             decreaseButton.style.cursor = "pointer";
-             decreaseButton.onclick = () => updateQuantity(item.name, -1);
-            const cantidad = document.createElement("p");
-            cantidad.id="p-cantidad";
-            cantidad.textContent = `${quantity}`;
-             // Botón "+"
+            img.style.width = "80%";
+            img.style.height = "80%";
+            img.style.marginBottom = "10px";
+
+            // Detalles del producto
+            const details = document.createElement("div");
+            details.style.textAlign = "center"; // Centrar texto
+
+            const name = document.createElement("p");
+            name.textContent = `${item.name}`;
+            name.style.margin = "0 0 5px 0"; // Espaciado entre líneas
+            name.style.fontWeight = "bold";
+
+            const price = document.createElement("p");
+            price.textContent = `$${item.price} x ${item.quantity}`;
+            price.style.margin = "0";
+
+            // Contenedor de botones
+            const buttonContainer = document.createElement("div");
+            buttonContainer.style.display = "flex";
+            buttonContainer.style.justifyContent = "center";
+            buttonContainer.style.marginTop = "10px";
+
+            // Botón para disminuir cantidad
+            const decreaseButton = document.createElement("button");
+            decreaseButton.textContent = "-";
+            decreaseButton.style.marginRight = "5px";
+            decreaseButton.style.padding = "5px 10px";
+            decreaseButton.style.cursor = "pointer";
+            decreaseButton.onclick = () => updateQuantity(index, -1);
+
+            // Cantidad actual
+            const quantityDisplay = document.createElement("span");
+            quantityDisplay.textContent = `${item.quantity}`;
+            quantityDisplay.style.margin = "0 10px";
+            quantityDisplay.style.fontWeight = "bold";
+
+            // Botón para aumentar cantidad
             const increaseButton = document.createElement("button");
-            increaseButton.id = "increase-button";
-            increaseButton.textContent = "➕";
-            increaseButton.style.padding = "5px";
+            increaseButton.textContent = "+";
+            increaseButton.style.marginLeft = "5px";
+            increaseButton.style.padding = "5px 10px";
             increaseButton.style.cursor = "pointer";
-            increaseButton.onclick = () => updateQuantity(item.name, 1);
-           
-            decreaseButton.onclick = () => removeFromCart(item.name); // Eliminar solo este producto
-            const sep = document.createElement("br");
-            // Añadir la imagen, detalles y botón al contenedor
+            increaseButton.onclick = () => updateQuantity(index, 1);
+
+            buttonContainer.appendChild(decreaseButton);
+            buttonContainer.appendChild(quantityDisplay);
+            buttonContainer.appendChild(increaseButton);
+
+            // Agregar elementos al contenedor
+            details.appendChild(name);
+            details.appendChild(price);
             productContainer.appendChild(img);
-            productContainer.appendChild(productDetails);
-            productContainer.appendChild(cantidad);
-            productContainer.appendChild(decreaseButton);
-            productContainer.appendChild(increaseButton);
-            productContainer.appendChild(sep);
-            productContainer.appendChild(sep);
-            productContainer.appendChild(sep);
-            productContainer.appendChild(sep);
-            // Añadir el contenedor al elemento de lista
-            li.appendChild(productContainer);
-            cartItemsElement.appendChild(li);
-            subtotalAmount += subtotal;
-            ivaAmount += iva;
-            totalAmount += total;
-            
-            
-            //console.log(totalAmount);
+            productContainer.appendChild(details);
+            productContainer.appendChild(buttonContainer);
+
+            // Añadir el contenedor del producto al carrito
+            cartItemsElement.appendChild(productContainer);
+
+            // Calcular subtotal
+            subtotal += item.price * item.quantity;
         });
-        subtotalAmountElement.textContent = `SubTotal: $${subtotalAmount.toFixed(2)}`;
-        ivaAmountElement.textContent = `IVA: $${ivaAmount.toFixed(2)}`;
-        totalAmountElement.textContent = `Total: $${totalAmount.toFixed(2)}`;
 
-        totalAmountElement.className="total-p";
-        subtotalAmountElement.className="total-p";
-        ivaAmountElement.className="total-p";
-    }
+        // Calcular IVA y total
+        const iva = subtotal * 0.15;
+        const total = subtotal + iva;
 
-    if (!cartItemsElement.parentNode.contains(subtotalAmountElement)) {
-        cartItemsElement.parentNode.appendChild(subtotalAmountElement);
-    }
-    if (!cartItemsElement.parentNode.contains(ivaAmountElement)) {
-        cartItemsElement.parentNode.appendChild(ivaAmountElement);
-    }
-    if (!cartItemsElement.parentNode.contains(totalAmountElement)) {
-        cartItemsElement.parentNode.appendChild(totalAmountElement);
+        // Actualizar valores en el DOM
+        subtotalAmountElement.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+        ivaAmountElement.textContent = `IVA: $${iva.toFixed(2)}`;
+        totalAmountElement.textContent = `Total: $${total.toFixed(2)}`;
     }
 }
+
 // Función para actualizar la cantidad de un producto
-function updateQuantity(productName, change) {
-    const productIndex = cart.findIndex(item => item.name === productName);
+function updateQuantity(index, change) {
+    if (cart[index]) {
+        cart[index].quantity += change;
 
-    if (productIndex !== -1) {
-        cart[productIndex].quantity += change;
-
-        // Si la cantidad es menor a 1, eliminar el producto
-        if (cart[productIndex].quantity < 1) {
-            cart.splice(productIndex, 1);
+        // Eliminar producto si la cantidad es menor a 1
+        if (cart[index].quantity < 1) {
+            cart.splice(index, 1);
         }
 
-        // Actualizar el carrito en el Local Storage
+        // Guardar cambios en el Local Storage
         localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Actualizar el contador y la vista del carrito
         updateCartCount();
-        displayCart(); // Actualizar la vista del carrito
-    }
-}
-
-
-// Función para eliminar un producto del carrito
-function removeFromCart(productName) {
-    // Buscar el índice del producto en el carrito
-    const productIndex = cart.findIndex(item => item.name === productName);
-
-    if (productIndex !== -1) {
-        if (cart[productIndex].quantity > 1) {
-            // Si la cantidad es mayor a 1, reducir la cantidad
-            cart[productIndex].quantity--;
-        } else {
-            // Si la cantidad es 1, eliminar el producto completamente
-            cart.splice(productIndex, 1);
-        }
-        // Actualizar el carrito en Local Storage
-        localStorage.setItem("cart", JSON.stringify(cart));
-        // Actualizar el contador
-        updateCartCount();
-        // Actualizar la lista del carrito
         displayCart();
     }
 }
 
+
+// Función para agregar un producto al carrito
+function addToCart(productName, productPrice, productImage, productQuantity) {
+    if (!productQuantity || productQuantity <= 0) productQuantity = 1;
+
+    const productIndex = cart.findIndex(item => item.name === productName);
+
+    if (productIndex !== -1) {
+        cart[productIndex].quantity += productQuantity;
+    } else {
+        cart.push({ name: productName, price: productPrice, image: productImage, quantity: productQuantity });
+    }
+
+    console.log("Producto añadido:", cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    displayCart();
+}
+
 // Función para vaciar el carrito
 function clearCart() {
-    cart = []; // Vaciar el array
-    localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar Local Storage
-    localStorage.setItem("cartCount", 0); // Restablecer el contador en el Local Storage
-    updateCartCount(); // Actualizar el contador
-    displayCart(); // Actualizar la lista del carrito
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    displayCart();
 }
 
 // Función para actualizar el contador del carrito
 function updateCartCount() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    localStorage.setItem("cartCount", totalItems); // Guardar el contador en Local Storage
-    const cartCountElement = document.getElementById("cart-count");
-    if (cartCountElement) {
-        cartCountElement.textContent = totalItems;
-    }
+    cartCountElement.textContent = totalItems;
+    localStorage.setItem("cartCount", totalItems);
 }
 
-// Llamar a displayCart al cargar la página
-displayCart();
-  
+// Inicializar el carrito al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Cargando carrito...");
+    updateCartCount();
+    displayCart();
+});
+
+
 
 
 

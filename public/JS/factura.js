@@ -31,10 +31,11 @@ async function enviarFactura() {
                 },
                 productos 
             })
+            
         });
-            const data = await response.json();
+        const data = await response.json();
             alert(`Factura creada con éxito. Número: ${data.factura.fac_numero}`);
-            clearCart();
+            clearCart();    
     } catch (error) {
         console.error('Error al enviar la factura:', error);
         alert('Hubo un error al procesar la factura. Por favor, inténtelo nuevamente.');

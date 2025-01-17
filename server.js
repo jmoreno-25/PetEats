@@ -5,8 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg'); // Importar el módulo pg para PostgreSQL
 const app = express();
-const PORT = process.env.PORT || 4000;
-const host=process.env.HOST || 33789;
+const PORT = process.env.PORT || 33789;
+const host=process.env.HOST || 8080;
 // Middleware para parsear JSON
 app.use(bodyParser.json());
 
